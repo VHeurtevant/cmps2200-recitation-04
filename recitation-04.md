@@ -36,7 +36,7 @@ To use this function to count words, you'll need to implement your own `map_f` a
 
 4. Assume that a word `w` appears `n` times. What is the **work** and **span** of `word_count_reduce` for this word, assuming a parallel implementation of the `reduce` function?
 
-**Enter answer here**
+The work for word_count_reduce is composed of the work for the reduce function as well as any additional work in word_count_reduce.The work in word_count_reduce aside from reduce is constant, so we have the work is W(n) = 2W(n/2)+1 which is O(n), and then the span is S(n)=S(n/2)+1 which is O(lg(n)).
 
 
 5. Why are we going through all this trouble? Couldn't I just use this function to count words?
@@ -52,7 +52,7 @@ for doc in docs:
 
 What is the problem that prevents us from easily parallelizing this solution?
 
-This easy solution can not be paralellized beacuse the count is sequential- each count depends on the count of the previous step. 
+This easy solution can not be paralellized beacuse the count is sequential- each count depends on the count of the previous step. The worst case running time of this algorithm is O(n^2), which is horribly inefficient for large n. 
 
 
 ## Part 2: Sentiment analysis
